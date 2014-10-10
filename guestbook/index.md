@@ -8,10 +8,10 @@ comments: yes
 
 Hey, Dude：
 
-Welcome to visit faye wang's Blog!
+Welcome to visit Bravelee's Blog, In Hack We Trust!
 
 If U have any problems，Please leave me a message，we can learn it together.
 
 Hope U can enjoy it , Have fun!
 
-By Faye Wang @ 2014-8-18
+By Bravelee @ 2013-12-05

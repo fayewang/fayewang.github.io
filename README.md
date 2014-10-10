@@ -1,8 +1,8 @@
-# Faye Wang's Blog 
+# Bravelee's Blog - IN HACK WE TRUST
 
 -------------------------------------
 ##
-##### Please Visit ： <http://www.itucao.us/>
+##### Please Visit ： <http://www.bravelee.net/>
 ##
 ## 概述
 
@@ -36,8 +36,11 @@
 
 >Email: ms4dam0n at gmail dot com
 
+>Twitter: [@ms4dam0n](https://twitter.com/ms4dam0n)
 
->Blog: [Faye Wang's Blog](http://www.itucao.us/)
+>Facebook: [@Bravelee](https://www.facebook.com/profile.php?id=100000081127265)
+
+>Blog: [Bravelee's Blog](http://www.bravelee.net/)
 
 
 ## 参考
