@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<!-- via Bravelee  Inspired by @LOO2K -->
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Congratulations!" />
+    <meta name="author" content="Bravelee" />
+    <meta name="keywords" content="Congratulations!, marriage" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>Congratulations!</title>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <div id="loading">Please wait，Loading...</div>
+    <div id="theEnd">
+        <img class="cake" src="http://bravelee.u.qiniudn.com/sanduo_love.png" alt="cake">
+        <h1>Congratulations!</h1>
+        <p>-- By Bravelee</p>
+        <button class="share" data-toggle="wshare" data-type="weibo">分享到微博</button>
+        <button class="reload" onclick="window.location.reload();"> Replay </button>
+        <button class="reload"> <a href="http://bravelee.net/2014/08/16/A-Letter-to-SanDuo/" style="text-decoration: none" target="_blank"> A Letter To XuWei :) </a></button>
+    </div>
+    <div id="map"></div>
+
+    <!-- 指定全局的分享内容 -->
+    <input id="wsContent" type="hidden" value="Congratulations! @老冀呀  @xiaoyuernizi 。JiHui, wish you and your bride every joy and the best of everything． via @Ms4dam0n">
+    <!-- 指定全局的分享链接 -->
+    <input id="wsUrl" type="hidden" value="http://www.bravelee.com/Congratulations">
+    <!-- 指定全局的分享图片 -->
+    <input id="wsPic" type="hidden" value="http://bravelee.u.qiniudn.com/sanduo_lo.png">
+
+
+<script type="text/javascript" src="http://bravelee.u.qiniudn.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://bravelee.u.qiniudn.com/soundmanager2-nodebug-jsmin.js"></script>
+<script type="text/javascript">
+(function(a,b){"use strict";var c=function(){var a=[["requestFullscreen","exitFullscreen","fullscreenchange","fullscreen","fullscreenElement"],["webkitRequestFullScreen","webkitCancelFullScreen","webkitfullscreenchange","webkitIsFullScreen","webkitCurrentFullScreenElement"],["mozRequestFullScreen","mozCancelFullScreen","mozfullscreenchange","mozFullScreen","mozFullScreenElement"]];for(var c=0,d=a.length;c<d;c++){var e=a[c];if(e[1]in b)return e}}();if(!c)return a.screenfull=!1;var d="ALLOW_KEYBOARD_INPUT"in Element,e={init:function(){return b.addEventListener(c[2],function(a){e.isFullscreen=b[c[3]],e.element=b[c[4]],e.onchange(a)}),this},isFullscreen:b[c[3]],element:b[c[4]],request:function(a){a=a||b.documentElement,a[c[0]](d&&Element.ALLOW_KEYBOARD_INPUT),b.isFullscreen||a[c[0]]()},exit:function(){b[c[1]]()},toggle:function(a){this.isFullscreen?this.exit():this.request(a)},onchange:function(){}};a.screenfull=e.init()})(window,document)
+</script>
+<script type="text/javascript" src="./script.js"></script>
+<script type="text/javascript" src="http://bravelee.u.qiniudn.com/jquery.wshare.js"></script>
+</body>
+</html>

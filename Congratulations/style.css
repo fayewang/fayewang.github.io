@@ -1,0 +1,108 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+    margin:0;
+    padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,img { 
+    border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol,ul {
+    list-style:none;
+}
+caption,th {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:bold;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border:0;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+/* Common 定义基本样式 */
+body {
+    font: 12px/1.8 'Microsoft Yahei','Helvetica Neue',Helvetica,Arial,Sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #ECE8DE;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+#loading {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    background: url("http://happybirthday520.qiniudn.com/loading.gif") no-repeat center center #ECE8DE;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 300px;
+    font-size: 32px;
+    color: #666;
+}
+#theEnd {
+    height: 0%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 999;
+    background-color: #ECE8DE;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #666;
+}
+#theEnd h1 {
+    font-size: 40px;
+}
+#theEnd p {
+    font-size: 20px;
+    text-indent: 200px;
+}
+
+#theEndText {
+    position: absolute;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    line-height: 2;
+    top: 50%;
+    margin-top: -100px;
+    height: 200px;
+}
+.cake {
+    height: 520px;
+    width: 908px;
+}
+.share,
+.reload {
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+    padding: 5px 15px;
+    color: #fff;
+    background-color: #ef9ca7;
+    border-radius: 4px;
+}

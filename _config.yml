@@ -1,0 +1,9 @@
+markdown: rdiscount
+permalink: /:year/:month/:day/:title/
+url: http://www.bravelee.net
+author: Bravelee
+pygments: true
+safe: true
+paginate: 25
+auto: true
+

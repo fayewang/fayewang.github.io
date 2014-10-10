@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="{{ site.author }}" />
+    <title>{{ page.title }} | {{ site.author }}</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="{{ site.author }}" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    
+    <!--以下script百度统计异步代码-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?43ac6097be134a40fb9dd82a8dceecc4";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+  </head>
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);">
+    <div id="container">
+      <div id="main" role="main">
+        
+        <header>
+        <h1>{{ page.title }}</h1>
+          
+          <form id="search-form">
+            <input id="query" type="text" placeholder="Search"></input>
+            <button type="submit" class="icon-search"></button>
+          </form>
+          <script type="text/javascript">
+          $(document).ready(function() {
+            var entries = null;
+          
+            function htmlEscape(s) {
+              return String(s).replace(/[&<>"'\/]/g, function(s) {
+                var entityMap = {
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': '&quot;',
+                  "'": '&#39;',
+                  "/": '&#x2F;'
+                };
+                return entityMap[s];
+              });
+            }
+          
+            function xmlDateToJavascriptDate(xmlDate) {
+              var re = /^([0-9]{4,})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]+)?(Z|([+-])([0-9]{2}):([0-9]{2}))?$/;
+              var match = xmlDate.match(re);
+              if (!match)
+                return null;
+          
+              var all = match[0];
+              var year = match[1];  var month = match[2];  var day = match[3];
+              var hour = match[4];  var minute = match[5]; var second = match[6];
+              var milli = match[7]; 
+              var z_or_offset = match[8];  var offset_sign = match[9]; 
+              var offset_hour = match[10]; var offset_minute = match[11];
+          
+              if (offset_sign) {
+                var direction = (offset_sign == "+" ? 1 : -1);
+                hour =   parseInt(hour)   + parseInt(offset_hour)   * direction;
+                minute = parseInt(minute) + parseInt(offset_minute) * direction;
+              }
+              month = parseInt(month) - 1;
+              var utcDate = Date.UTC(year, month, day, hour, minute, second, (milli || 0));
+              return new Date(utcDate);
+            }
+          
+            function formatDate(date) {
+              return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+            }
+          
+            function findEntries(q) {
+              var matches = [];
+              var rq = new RegExp(q, 'im');
+              var rl = /^http:\/\/www\.bravelee\.net\/\d{4}\/\d{2}\/\d{2}\/(.+)\/$/;
+              for (var i = 0; i < entries.length; i++) {
+                var entry = entries[i];
+                var title = $(entry.getElementsByTagName('title')[0]).text();
+                var link = $(entry.getElementsByTagName('link')[0]).attr('href');
+                var title_en = rl.exec(link)[1].replace(/-/g, ' ');
+                var content = $(entry.getElementsByTagName('content')[0]).text();          
+                if (rq.test(title) || rq.test(title_en) || rq.test(content)) {
+                  var updated = formatDate(xmlDateToJavascriptDate($(entry.getElementsByTagName('updated')[0]).text()));
+                  matches.push({'title': title, 'link': link, 'date': updated, 'content': content});
+                }
+              }
+              var html = '<section class="post"><ul class="listing">';
+              for (var i = 0; i < matches.length; i++) {
+                var match = matches[i]; 
+                html += '<li class="listing-item">';
+                html += '<time datetime="' + match.date + '">' + match.date + '</time>';
+                html += '<a href="' + match.link + '">' + htmlEscape(match.title) + '</a>';
+                html += '</li>';
+              }
+              html += '</ul></section>'
+              $('#main-content').html(html);
+              $('#loader').hide();
+              $('#main-content').show();
+            }
+          
+            $('#search-form').submit(function() {
+              var query = $('#query').val();
+              $('#query').blur().attr('disabled', true);
+              $('#main-content').hide();
+              $('#loader').show();
+              if (entries == null) {
+                $.ajax({url: '/feed/atom.xml?r=' + (Math.random() * 99999999999), dataType: 'xml', success: function(data) {
+                  entries = data.getElementsByTagName('entry');
+                  findEntries(query);
+                }});
+              } else {
+                findEntries(query);
+              }
+              $('#query').blur().attr('disabled', false);
+              return false;
+            });
+          
+          });
+          </script>
+        </header>
+
+        <nav>        
+        <span><a href="/">Home</a></span>
+        <span><a href="/about/">About</a></span>
+        <span><a href="/categories/">Cats</a></span>
+        <span><a href="/tags/">Tags</a></span> 
+        <span><a href="/guestbook/">Gbook</a></span>
+        <span><a href="/links/">Links</a></span>
+        <span><a href="https://github.com/bravelee/bravelee.github.com/wiki" target="_blank">Wiki</a></span>
+        <span><a href="/feed/">RSS</a></span>
+        </nav>
+
+        <article class="content">
+          <div id="loader"><img src="{{site.url}}/assets/images/loading.gif" alt="Waiting..."></div>
+          <div id="main-content">{{ content }}</div>
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2012 - {{site.time | date:"%Y"}} by <a href="/about/">Bravelee</a> | 
+        
+        <!--以下内容可以调用上面的时间函数，用于显示类似“2013-12-04 12:14”格式，如果想要显示，去掉注释即可
+        <span class="label label-info" id="timeSpan"></span>
+        -->
+        </small></p>
+    </footer>
+
+    </div>
+    
+<!-- 以下代码为google流量分析，由于google被墙，所以该段代码会导致网站访问速度缓慢，因此注释掉
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34960818-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    -->
+   
+  </body>
+</html>
